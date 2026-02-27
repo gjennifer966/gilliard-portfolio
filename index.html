@@ -251,43 +251,89 @@
     }
 
     /* PROJECTS */
-    .game-banner {
-      width: 100%;
-      border-radius: 12px;
-      overflow: hidden;
+    .projects-section-title { margin-bottom: 1rem; }
+    .projects-subtitle {
+      font-size: 1rem;
+      color: var(--text-muted);
       margin-bottom: 2.5rem;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
-    }
-
-    .game-banner img { width: 100%; height: auto; display: block; }
-
-    .projects-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
+      max-width: 700px;
     }
 
     .project-card {
       background: var(--white);
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 1.75rem;
+      overflow: hidden;
       box-shadow: 0 2px 10px rgba(0,0,0,0.04);
-      transition: box-shadow 0.2s, transform 0.2s;
+      transition: box-shadow 0.3s, transform 0.3s;
+      margin-bottom: 2rem;
     }
 
     .project-card:hover {
-      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+      transform: translateY(-4px);
     }
 
-    .project-card .proj-icon { font-size: 2rem; margin-bottom: 1rem; }
-    .project-card h3 { font-size: 1.3rem; color: var(--navy); margin-bottom: 0.25rem; }
-    .project-card .proj-meta { font-size: 0.85rem; color: var(--gold); font-weight: 600; margin-bottom: 0.75rem; }
-    .project-card p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1rem; }
-    .project-card ul { list-style: none; display: flex; flex-direction: column; gap: 0.35rem; }
-    .project-card ul li { font-size: 0.875rem; color: #555; display: flex; gap: 0.5rem; }
-    .project-card ul li::before { content: '\2022'; color: var(--gold); }
+    .project-card-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    .project-card-inner.reverse { direction: rtl; }
+    .project-card-inner.reverse > * { direction: ltr; }
+
+    .project-img {
+      width: 100%;
+      height: 100%;
+      min-height: 280px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .project-info {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .project-info .proj-category {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .project-info h3 { font-size: 1.4rem; color: var(--navy); margin-bottom: 0.5rem; }
+    .project-info .proj-meta { font-size: 0.85rem; color: var(--text-muted); font-weight: 500; margin-bottom: 1rem; }
+    .project-info p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.6; }
+    .project-info ul { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+    .project-info ul li { font-size: 0.875rem; color: #555; display: flex; gap: 0.5rem; }
+    .project-info ul li::before { content: '\25B8'; color: var(--gold); flex-shrink: 0; }
+
+    .project-tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 1rem;
+    }
+
+    .tech-tag {
+      background: rgba(30,58,95,0.08);
+      color: var(--navy);
+      padding: 0.25rem 0.7rem;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+
+    @media (max-width: 768px) {
+      .project-card-inner, .project-card-inner.reverse { grid-template-columns: 1fr; direction: ltr; }
+      .project-img { min-height: 200px; }
+    }
 
     /* SKILLS */
     .skills-grid {
@@ -396,7 +442,7 @@
     @media (max-width: 768px) {
       .hero-content { padding: 0 1.5rem; }
       .hero-content h1 { font-size: 2.4rem; }
-      .summary-grid, .skills-grid, .edu-certs-grid, .projects-grid { grid-template-columns: 1fr; }
+      .summary-grid, .skills-grid, .edu-certs-grid { grid-template-columns: 1fr; }
       nav ul { gap: 1rem; }
       nav { padding: 0 1rem; }
     }
@@ -539,34 +585,134 @@
   <!-- PROJECTS -->
   <section id="projects" class="section-alt">
     <div class="container">
-      <h2 class="section-title">Game Development Projects</h2>
-      <div class="game-banner">
-        <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663380906291/HdBCYkRszzCuqxdY9y7S8x/game-project-showcase-dBZDw3hkka7tmnkFqU3zKt.webp" alt="Game Development Showcase" />
-      </div>
-      <div class="projects-grid">
-        <div class="project-card">
-          <div class="proj-icon">&#128640;</div>
-          <h3>Galactic Guardian</h3>
-          <p class="proj-meta">Personal Project — Lead Developer &amp; Designer | January 2023 – Present</p>
-          <p>A 2D top-down space shooter built with Godot Engine, featuring dynamic enemy AI and procedural level generation.</p>
-          <ul>
-            <li>Implemented core gameplay mechanics including player movement, combat systems, and power-ups using GDScript.</li>
-            <li>Designed and integrated user interface elements for an intuitive player experience.</li>
-            <li>Managed project workflow and version control using Git, collaborating with a small team for asset creation.</li>
-          </ul>
+      <h2 class="section-title projects-section-title">Work Samples &amp; Projects</h2>
+      <p class="projects-subtitle">A curated selection of game development projects and engineering work showcasing my technical expertise across multiple disciplines.</p>
+
+      <!-- Project 1: Galactic Guardian -->
+      <div class="project-card">
+        <div class="project-card-inner">
+          <img class="project-img" src="https://d2xsxph8kpxj0f.cloudfront.net/310519663380906291/HdBCYkRszzCuqxdY9y7S8x/galactic-guardian-NMsNgAfmrSLju3xSrqV6i5.webp" alt="Galactic Guardian Game Screenshot" />
+          <div class="project-info">
+            <p class="proj-category">Game Development</p>
+            <h3>Galactic Guardian</h3>
+            <p class="proj-meta">Personal Project — Lead Developer &amp; Designer | January 2023 – Present</p>
+            <p>A 2D top-down space shooter built with Godot Engine, featuring dynamic enemy AI and procedural level generation.</p>
+            <ul>
+              <li>Implemented core gameplay mechanics including player movement, combat systems, and power-ups using GDScript.</li>
+              <li>Designed and integrated user interface elements for an intuitive player experience.</li>
+              <li>Managed project workflow and version control using Git, collaborating with a small team for asset creation.</li>
+            </ul>
+            <div class="project-tech-tags">
+              <span class="tech-tag">Godot Engine</span>
+              <span class="tech-tag">GDScript</span>
+              <span class="tech-tag">2D Graphics</span>
+              <span class="tech-tag">AI Systems</span>
+              <span class="tech-tag">Git</span>
+            </div>
+          </div>
         </div>
-        <div class="project-card">
-          <div class="proj-icon">&#127984;</div>
-          <h3>Dungeon Delve</h3>
-          <p class="proj-meta">Game Jam Entry — Gameplay Programmer | October 2023</p>
-          <p>A 3D dungeon crawler prototype developed during a 48-hour game jam, focusing on character controls and interaction systems.</p>
-          <ul>
-            <li>Programmed character abilities and enemy behaviors utilizing Godot's physics engine for realistic interactions.</li>
-            <li>Collaborated with artists and designers to integrate assets and refine gameplay loops.</li>
-            <li>Delivered a fully playable prototype within the 48-hour jam constraint.</li>
-          </ul>
+      </div>
+
+      <!-- Project 2: Dungeon Delve -->
+      <div class="project-card">
+        <div class="project-card-inner reverse">
+          <img class="project-img" src="https://d2xsxph8kpxj0f.cloudfront.net/310519663380906291/HdBCYkRszzCuqxdY9y7S8x/dungeon-delve-SXTpLgCoza6vbFNsXaruBC.webp" alt="Dungeon Delve Game Screenshot" />
+          <div class="project-info">
+            <p class="proj-category">Game Development</p>
+            <h3>Dungeon Delve</h3>
+            <p class="proj-meta">Game Jam Entry — Gameplay Programmer | October 2023</p>
+            <p>A 3D dungeon crawler prototype developed during a 48-hour game jam, focusing on character controls and interaction systems.</p>
+            <ul>
+              <li>Programmed character abilities and enemy behaviors utilizing Godot's physics engine for realistic interactions.</li>
+              <li>Collaborated with artists and designers to integrate assets and refine gameplay loops.</li>
+              <li>Delivered a fully playable prototype within the 48-hour jam constraint.</li>
+            </ul>
+            <div class="project-tech-tags">
+              <span class="tech-tag">Godot Engine</span>
+              <span class="tech-tag">3D Physics</span>
+              <span class="tech-tag">C#</span>
+              <span class="tech-tag">Level Design</span>
+              <span class="tech-tag">Game Jam</span>
+            </div>
+          </div>
         </div>
       </div>
+
+      <!-- Project 3: SCADA Control Systems -->
+      <div class="project-card">
+        <div class="project-card-inner">
+          <img class="project-img" src="https://d2xsxph8kpxj0f.cloudfront.net/310519663380906291/HdBCYkRszzCuqxdY9y7S8x/electrical-scada-GxTw8otj4EQpaMieMW77q3.webp" alt="SCADA Control Systems" />
+          <div class="project-info">
+            <p class="proj-category">Electrical Engineering</p>
+            <h3>SCADA &amp; PLC Control System Optimization</h3>
+            <p class="proj-meta">PECO, An Exelon Company | 2018 – Present</p>
+            <p>Led the optimization of SCADA and PLC monitoring systems across multiple substations, improving real-time grid visibility and reducing fault response times.</p>
+            <ul>
+              <li>Configured and maintained SCADA interfaces for real-time monitoring of power flow, voltage levels, and system status across 12+ substations.</li>
+              <li>Developed custom alarm protocols and automated fault detection routines, reducing average response time by 35%.</li>
+              <li>Coordinated with IT and OT teams to implement cybersecurity measures for critical infrastructure systems.</li>
+            </ul>
+            <div class="project-tech-tags">
+              <span class="tech-tag">SCADA</span>
+              <span class="tech-tag">PLC Programming</span>
+              <span class="tech-tag">HMI Design</span>
+              <span class="tech-tag">Industrial Controls</span>
+              <span class="tech-tag">Cybersecurity</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 4: Power Distribution Infrastructure -->
+      <div class="project-card">
+        <div class="project-card-inner reverse">
+          <img class="project-img" src="https://d2xsxph8kpxj0f.cloudfront.net/310519663380906291/HdBCYkRszzCuqxdY9y7S8x/energy-infrastructure-P7PbXQ4nZ4UVvEuMs7gusp.webp" alt="Power Distribution Infrastructure" />
+          <div class="project-info">
+            <p class="proj-category">Energy Infrastructure</p>
+            <h3>Substation Upgrade &amp; Power Distribution</h3>
+            <p class="proj-meta">Customized Energy Solutions | 2014 – 2018</p>
+            <p>Managed a multi-phase substation upgrade project involving transformer replacements, switchgear modernization, and power distribution network expansion for industrial clients.</p>
+            <ul>
+              <li>Oversaw the installation and commissioning of 5 new transformer units and associated switchgear, increasing capacity by 40%.</li>
+              <li>Developed detailed project timelines and coordinated with contractors, ensuring on-time delivery within budget.</li>
+              <li>Implemented safety protocols that achieved zero lost-time incidents across all project phases.</li>
+            </ul>
+            <div class="project-tech-tags">
+              <span class="tech-tag">Power Distribution</span>
+              <span class="tech-tag">Transformers</span>
+              <span class="tech-tag">Switchgear</span>
+              <span class="tech-tag">Project Management</span>
+              <span class="tech-tag">Safety Compliance</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 5: Smart Grid Energy Dashboard -->
+      <div class="project-card">
+        <div class="project-card-inner">
+          <img class="project-img" src="https://d2xsxph8kpxj0f.cloudfront.net/310519663380906291/HdBCYkRszzCuqxdY9y7S8x/smart-grid-dashboard-eSrNx6JtaVd7hVeLPnXbtP.webp" alt="Smart Grid Energy Dashboard" />
+          <div class="project-info">
+            <p class="proj-category">Energy Management</p>
+            <h3>Smart Grid Energy Management System</h3>
+            <p class="proj-meta">PECO, An Exelon Company | 2020 – Present</p>
+            <p>Contributed to the design and deployment of a smart grid energy management dashboard for real-time monitoring of consumption patterns, predictive maintenance alerts, and grid efficiency optimization.</p>
+            <ul>
+              <li>Collaborated with software engineers to define requirements for real-time energy consumption visualization and predictive analytics modules.</li>
+              <li>Validated sensor data integration from 50+ field devices, ensuring 99.5% data accuracy for dashboard reporting.</li>
+              <li>Reduced energy waste by 18% through data-driven identification of inefficient distribution nodes.</li>
+            </ul>
+            <div class="project-tech-tags">
+              <span class="tech-tag">Smart Grid</span>
+              <span class="tech-tag">Data Analytics</span>
+              <span class="tech-tag">IoT Sensors</span>
+              <span class="tech-tag">Energy Efficiency</span>
+              <span class="tech-tag">Dashboard Design</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
