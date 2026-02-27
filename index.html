@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gilliard Jeniffer | Professional Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #1e3a5f;
+      --gold: #d4a574;
+      --gold-light: #e8c99a;
+      --bg: #fafafa;
+      --white: #ffffff;
+      --text: #1a1a1a;
+      --text-muted: #666;
+      --border: #e5e5e5;
+      --section-bg: #f4f1ec;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 64px;
+    }
+
+    nav .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--navy);
+      text-decoration: none;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav ul a {
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+
+    nav ul a:hover { color: var(--gold); }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      height: 520px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(15,25,45,0.82) 0%, rgba(15,25,45,0.35) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 4rem;
+      max-width: 800px;
+    }
+
+    .hero-content h1 {
+      font-size: 3.5rem;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-content .subtitle {
+      font-size: 1.3rem;
+      color: var(--gold-light);
+      font-weight: 500;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-content p {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.85);
+      max-width: 560px;
+      margin-bottom: 2rem;
+    }
+
+    .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.75rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: #fff;
+      border: 2px solid var(--gold);
+    }
+
+    .btn-gold:hover { background: #c4945f; border-color: #c4945f; }
+
+    .btn-outline {
+      background: transparent;
+      color: #fff;
+      border: 2px solid rgba(255,255,255,0.7);
+    }
+
+    .btn-outline:hover { background: rgba(255,255,255,0.12); }
+
+    /* SECTIONS */
+    section { padding: 5rem 2rem; }
+
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    .section-alt { background: var(--section-bg); }
+
+    .section-title {
+      font-size: 2.2rem;
+      color: var(--navy);
+      margin-bottom: 2.5rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: var(--gold);
+      margin-top: 0.5rem;
+    }
+
+    /* SUMMARY */
+    .summary-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .summary-text p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .summary-cards { display: flex; flex-direction: column; gap: 1.25rem; }
+
+    .summary-card {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    .summary-card .icon { font-size: 1.5rem; flex-shrink: 0; }
+    .summary-card h4 { font-size: 1rem; color: var(--navy); margin-bottom: 0.25rem; }
+    .summary-card p { font-size: 0.875rem; color: var(--text-muted); }
+
+    /* EXPERIENCE */
+    .experience-list { display: flex; flex-direction: column; gap: 2rem; }
+
+    .exp-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--gold);
+      border-radius: 10px;
+      padding: 1.75rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .exp-header h3 { font-size: 1.3rem; color: var(--text); }
+    .exp-header .company { color: var(--gold); font-weight: 600; font-size: 0.95rem; margin-top: 0.2rem; }
+    .exp-header .date { font-size: 0.85rem; color: var(--text-muted); white-space: nowrap; }
+
+    .exp-card ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+
+    .exp-card ul li {
+      display: flex;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+      color: #444;
+    }
+
+    .exp-card ul li::before {
+      content: '\25B8';
+      color: var(--gold);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* PROJECTS */
+    .game-banner {
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    }
+
+    .game-banner img { width: 100%; height: auto; display: block; }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .project-card:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      transform: translateY(-3px);
+    }
+
+    .project-card .proj-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .project-card h3 { font-size: 1.3rem; color: var(--navy); margin-bottom: 0.25rem; }
+    .project-card .proj-meta { font-size: 0.85rem; color: var(--gold); font-weight: 600; margin-bottom: 0.75rem; }
+    .project-card p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1rem; }
+    .project-card ul { list-style: none; display: flex; flex-direction: column; gap: 0.35rem; }
+    .project-card ul li { font-size: 0.875rem; color: #555; display: flex; gap: 0.5rem; }
+    .project-card ul li::before { content: '\2022'; color: var(--gold); }
+
+    /* SKILLS */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .skill-group h3 {
+      font-size: 1.2rem;
+      color: var(--navy);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+
+    .skill-tag {
+      background: rgba(212,165,116,0.12);
+      color: #a0723a;
+      border: 1px solid rgba(212,165,116,0.35);
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    /* EDUCATION & CERTS */
+    .edu-certs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .edu-card, .cert-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      margin-bottom: 1rem;
+    }
+
+    .edu-card h3 { font-size: 1.1rem; color: var(--navy); margin-bottom: 0.3rem; }
+    .edu-card .school { color: var(--gold); font-weight: 600; font-size: 0.9rem; margin-bottom: 0.5rem; }
+    .edu-card p { font-size: 0.875rem; color: var(--text-muted); }
+
+    .cert-card h3 { font-size: 1rem; color: var(--navy); margin-bottom: 0.25rem; }
+    .cert-card p { font-size: 0.85rem; color: var(--text-muted); }
+
+    /* CONTACT */
+    .contact-center { text-align: center; }
+    .contact-center > p { color: var(--text-muted); max-width: 540px; margin: 0 auto 2.5rem; font-size: 1rem; }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .contact-link.primary { background: var(--gold); color: #fff; }
+    .contact-link.primary:hover { background: #c4945f; }
+    .contact-link.secondary { border: 2px solid var(--gold); color: var(--gold); background: transparent; }
+    .contact-link.secondary:hover { background: rgba(212,165,116,0.1); }
+
+    .contact-info {
+      background: var(--section-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem 2rem;
+      display: inline-block;
+      text-align: left;
+    }
+
+    .contact-info p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 0.4rem; }
+    .contact-info strong { color: var(--navy); }
+
+    /* FOOTER */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.85);
+      text-align: center;
+      padding: 2.5rem 1rem;
+    }
+
+    footer p { font-size: 0.9rem; margin-bottom: 0.25rem; }
+    footer .sub { font-size: 0.8rem; opacity: 0.6; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero-content { padding: 0 1.5rem; }
+      .hero-content h1 { font-size: 2.4rem; }
+      .summary-grid, .skills-grid, .edu-certs-grid, .projects-grid { grid-template-columns: 1fr; }
+      nav ul { gap: 1rem; }
+      nav { padding: 0 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="logo">Gilliard Jeniffer</a>
+    <ul>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <img class="hero-bg" src="https://d2xsxph8kpxj0f.cloudfront.net/310519663380906291/HdBCYkRszzCuqxdY9y7S8x/portfolio-hero-bg-UAz3UpBMLrVickDRWpes2n.webp" alt="Hero Background" />
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Gilliard Jeniffer</h1>
+      <p class="subtitle">Electrical Engineer &amp; Game Developer</p>
+      <p>10+ years of experience in electrical systems, energy infrastructure, and operations management — combined with a passion for innovative game development using Godot Engine.</p>
+      <div class="btn-group">
+        <a href="#projects" class="btn btn-gold">View My Work</a>
+        <a href="#contact" class="btn btn-outline">Get In Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUMMARY -->
+  <section class="section-alt">
+    <div class="container">
+      <h2 class="section-title">Professional Summary</h2>
+      <div class="summary-grid">
+        <div class="summary-text">
+          <p>Highly motivated and results-oriented professional with over 10 years of progressive experience in electrical systems, energy infrastructure, and operations management, complemented by a passion for game development.</p>
+          <p>Proven ability to lead technical teams, optimize facility operations, and implement robust maintenance strategies. Seeking to leverage strong analytical and problem-solving skills in a challenging role that combines electrical engineering expertise with innovative game development projects, particularly within the Godot Engine.</p>
+        </div>
+        <div class="summary-cards">
+          <div class="summary-card">
+            <div class="icon">&#9889;</div>
+            <div>
+              <h4>Electrical Engineering</h4>
+              <p>Power systems, SCADA, PLC systems, facility operations, and maintenance strategies across multiple industrial sites.</p>
+            </div>
+          </div>
+          <div class="summary-card">
+            <div class="icon">&#127918;</div>
+            <div>
+              <h4>Game Development</h4>
+              <p>Godot Engine, GDScript, 2D/3D development, level design, and UI/UX implementation for interactive experiences.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="container">
+      <h2 class="section-title">Professional Experience</h2>
+      <div class="experience-list">
+
+        <div class="exp-card">
+          <div class="exp-header">
+            <div>
+              <h3>Operations &amp; Maintenance Supervisor</h3>
+              <p class="company">PECO, An Exelon Company — Philadelphia, PA</p>
+            </div>
+            <span class="date">May 2018 – Present</span>
+          </div>
+          <ul>
+            <li>Managed daily operations and maintenance for critical electrical and energy infrastructure across multiple sites, ensuring 99.9% uptime.</li>
+            <li>Developed and executed preventive maintenance schedules, reducing unplanned downtime by 20% and extending equipment lifespan.</li>
+            <li>Supervised a team of 10+ technicians and contractors, ensuring adherence to safety protocols and project specifications.</li>
+            <li>Monitored and troubleshot complex electrical and control systems, resolving issues within an average of 2 hours.</li>
+            <li>Implemented energy-saving initiatives that resulted in a 15% reduction in operational expenses.</li>
+          </ul>
+        </div>
+
+        <div class="exp-card">
+          <div class="exp-header">
+            <div>
+              <h3>Operations Manager</h3>
+              <p class="company">Customized Energy Solutions — Philadelphia, PA</p>
+            </div>
+            <span class="date">September 2014 – April 2018</span>
+          </div>
+          <ul>
+            <li>Directed field operations for temporary and permanent power solutions, serving over 50 industrial and commercial clients.</li>
+            <li>Oversaw the installation, commissioning, and maintenance of diverse electrical systems and power generation equipment.</li>
+            <li>Acted as a primary liaison between technical staff, project managers, and clients, ensuring clear communication and project success.</li>
+            <li>Developed and enforced uniform maintenance and safety protocols, improving operational reliability by 25%.</li>
+            <li>Analyzed operational performance indicators and optimized resource allocation by 15%.</li>
+          </ul>
+        </div>
+
+        <div class="exp-card">
+          <div class="exp-header">
+            <div>
+              <h3>Electrical Control Systems Technician</h3>
+              <p class="company">DuPont (formerly Chemours Company) — Edgemoor, DE</p>
+            </div>
+            <span class="date">June 2010 – August 2014</span>
+          </div>
+          <ul>
+            <li>Performed daily electrical inspections, troubleshooting, and repairs on industrial control systems.</li>
+            <li>Monitored and responded to control system alarms and faults, minimizing production interruptions.</li>
+            <li>Collaborated with maintenance and production teams to reduce equipment downtime by an average of 10%.</li>
+            <li>Participated in equipment upgrade and process improvement projects, enhancing system efficiency.</li>
+            <li>Maintained accurate service and maintenance records for all electrical systems.</li>
+          </ul>
+        </div>
+
+        <div class="exp-card">
+          <div class="exp-header">
+            <div>
+              <h3>Systems and Network Support Technician</h3>
+              <p class="company">Comcast Business — Philadelphia, PA</p>
+            </div>
+            <span class="date">November 2008 – May 2010</span>
+          </div>
+          <ul>
+            <li>Provided technical support for hardware, software, and network issues for business clients.</li>
+            <li>Installed and configured workstations, servers, and peripheral devices.</li>
+            <li>Assisted in troubleshooting and upgrading various IT systems, improving system performance.</li>
+            <li>Maintained system records and supported small-scale infrastructure projects.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="section-alt">
+    <div class="container">
+      <h2 class="section-title">Game Development Projects</h2>
+      <div class="game-banner">
+        <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663380906291/HdBCYkRszzCuqxdY9y7S8x/game-project-showcase-dBZDw3hkka7tmnkFqU3zKt.webp" alt="Game Development Showcase" />
+      </div>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="proj-icon">&#128640;</div>
+          <h3>Galactic Guardian</h3>
+          <p class="proj-meta">Personal Project — Lead Developer &amp; Designer | January 2023 – Present</p>
+          <p>A 2D top-down space shooter built with Godot Engine, featuring dynamic enemy AI and procedural level generation.</p>
+          <ul>
+            <li>Implemented core gameplay mechanics including player movement, combat systems, and power-ups using GDScript.</li>
+            <li>Designed and integrated user interface elements for an intuitive player experience.</li>
+            <li>Managed project workflow and version control using Git, collaborating with a small team for asset creation.</li>
+          </ul>
+        </div>
+        <div class="project-card">
+          <div class="proj-icon">&#127984;</div>
+          <h3>Dungeon Delve</h3>
+          <p class="proj-meta">Game Jam Entry — Gameplay Programmer | October 2023</p>
+          <p>A 3D dungeon crawler prototype developed during a 48-hour game jam, focusing on character controls and interaction systems.</p>
+          <ul>
+            <li>Programmed character abilities and enemy behaviors utilizing Godot's physics engine for realistic interactions.</li>
+            <li>Collaborated with artists and designers to integrate assets and refine gameplay loops.</li>
+            <li>Delivered a fully playable prototype within the 48-hour jam constraint.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="container">
+      <h2 class="section-title">Core Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h3>&#9889; Electrical Engineering &amp; Operations</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Power Generation</span>
+            <span class="skill-tag">Facility Operations</span>
+            <span class="skill-tag">SCADA &amp; PLC Systems</span>
+            <span class="skill-tag">Low &amp; Medium Voltage</span>
+            <span class="skill-tag">Preventive Maintenance</span>
+            <span class="skill-tag">Asset Reliability</span>
+            <span class="skill-tag">Safety Compliance (OSHA)</span>
+            <span class="skill-tag">Vendor Management</span>
+            <span class="skill-tag">Project Coordination</span>
+            <span class="skill-tag">Energy Efficiency</span>
+            <span class="skill-tag">Technical Team Leadership</span>
+            <span class="skill-tag">Troubleshooting</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>&#127918; Game Development &amp; Design</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Godot Engine</span>
+            <span class="skill-tag">GDScript</span>
+            <span class="skill-tag">C#</span>
+            <span class="skill-tag">2D/3D Development</span>
+            <span class="skill-tag">Level Design</span>
+            <span class="skill-tag">UI/UX Implementation</span>
+            <span class="skill-tag">Physics Simulation</span>
+            <span class="skill-tag">Animation</span>
+            <span class="skill-tag">Version Control (Git)</span>
+            <span class="skill-tag">Agile Development</span>
+            <span class="skill-tag">Prototyping</span>
+            <span class="skill-tag">Debugging</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION & CERTIFICATIONS -->
+  <section class="section-alt">
+    <div class="container">
+      <div class="edu-certs-grid">
+        <div>
+          <h2 class="section-title">Education</h2>
+          <div class="edu-card">
+            <h3>Bachelor of Science in Electrical Engineering Technology</h3>
+            <p class="school">Pomona College — Claremont, CA</p>
+            <p>Graduated: May 2008 &nbsp;|&nbsp; GPA: 3.8 / 4.0</p>
+            <p style="margin-top:0.75rem"><strong>Relevant Coursework:</strong> Power Systems Analysis, Control Systems, Digital Electronics, Renewable Energy Systems, Industrial Automation.</p>
+          </div>
+          <div class="edu-card">
+            <h3>Languages</h3>
+            <p>English (Native) &middot; Spanish (Conversational)</p>
+          </div>
+        </div>
+        <div>
+          <h2 class="section-title">Certifications</h2>
+          <div class="cert-card">
+            <h3>OSHA 30-Hour Construction Safety Certification</h3>
+            <p>Occupational Safety and Health Administration</p>
+          </div>
+          <div class="cert-card">
+            <h3>Certified Energy Manager (CEM)</h3>
+            <p>Association of Energy Engineers (AEE)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container contact-center">
+      <h2 class="section-title" style="display:block;text-align:center">Get In Touch</h2>
+      <p>I am always open to new opportunities and collaborations. Feel free to reach out via any of the channels below.</p>
+      <div class="contact-links">
+        <a href="mailto:gilliardjenniffer6@gmail.com" class="contact-link primary">&#9993; Email Me</a>
+        <a href="https://linkedin.com/in/gilliard-jeniffer-8a2b3c4d" target="_blank" rel="noopener" class="contact-link secondary">in LinkedIn</a>
+        <a href="https://github.com/gjeniffer" target="_blank" rel="noopener" class="contact-link secondary">&#8997; GitHub</a>
+      </div>
+      <div class="contact-info">
+        <p><strong>Phone:</strong> (215) 237-9809</p>
+        <p><strong>Email:</strong> gilliardjenniffer6@gmail.com</p>
+        <p><strong>Location:</strong> Prospect Park, PA 19076</p>
+        <p><strong>LinkedIn:</strong> linkedin.com/in/gilliard-jeniffer-8a2b3c4d</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2026 Gilliard Jeniffer. All rights reserved.</p>
+    <p class="sub">Electrical Engineer &middot; Game Developer &middot; Problem Solver</p>
+  </footer>
+
+</body>
+</html>
